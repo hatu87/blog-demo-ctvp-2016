@@ -1,9 +1,18 @@
 title: <%= @article.title %> <br/>
 content: <%= @article.content %> <br/>
 
-<%= form_for @comment do |f| %>
-  <%= f.label :name %> 
+<% if(flash[:error]) %>
+  <%= flash[:error]%>
+<% end %>
+
+<%= form_for [@article, @comment] do |f| %>
+  <%= f.label :name %>
   <%= f.text_field :name %>
+  <br>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <br>
+  <%= f.button %>
 <% end %>
 
 <% if @article.comments.count == 0 %>
