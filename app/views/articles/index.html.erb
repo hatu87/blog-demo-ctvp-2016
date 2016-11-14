@@ -1,5 +1,5 @@
 <h1>Article Index</h1>
-
+<%= link_to "New Article", new_article_path %>
 <table>
   <tr>
     <th>#</th>
@@ -7,6 +7,7 @@
     <th>content</th>
     <th>created at</th>
     <th>updated at</th>
+    <th>actions</th>
   </tr>
   <% @articles.each do |article| %>
   <tr>
@@ -15,6 +16,10 @@
     <td><%= article.content %></td>
     <td><%= article.created_at %></td>
     <td><%= article.updated_at %></td>
+    <td>
+      <%= link_to "Show", article_path(article.id) %>
+      <%= link_to "Edit", edit_article_path(article.id) %>
+    </td>
   </tr>
   <% end %>
 </table>

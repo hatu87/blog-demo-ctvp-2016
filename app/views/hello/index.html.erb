@@ -1,5 +1,5 @@
-<form action="/hello" method="post">
+<%= form_tag("/hello", method: "post") do %>
   name: <input type="text" name="name" id="name" value="<%= @name %>"/> <br/>
   <button type="submit">Say Hello</button>
-</form>
+<% end %>
 hello <%= @name %>
