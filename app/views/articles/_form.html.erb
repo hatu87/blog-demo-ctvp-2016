@@ -1,9 +1,13 @@
 <%= form_for @article do |f| %>
-  <%= f.label :title %>:
-  <%= f.text_field :title %><br />
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control', placeholder: 'Enter article title' %><br />
+  </div>
 
-  <%= f.label :content %>:
-  <%= f.text_field :content %><br />
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.text_area :content, class: 'form-control', placeholder: 'Enter your article content' %><br />
+  </div>
 
-  <%= f.submit %>
+  <%= f.submit class: 'btn btn-primary' %>
 <% end %>

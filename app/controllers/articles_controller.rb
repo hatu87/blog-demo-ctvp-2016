@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    byebug
+    # byebug
     unless(@article.save)
       flash[:error] = "Error: Cannot create new article"
       render 'new'
