@@ -1,34 +1,53 @@
-<%= image_tag "test.jpg" %>
 <div class="container">
-  <div class="row">
-    <h1 class="page-header">Article Index</h1>
-  </div>
-  <div class="row">
-    <%= link_to "New Article", new_article_path, class: 'btn btn-primary' %>
-  </div>
-  <div class="row">
-    <table class="table">
-      <tr>
-        <th>#</th>
-        <th>title</th>
-        <th>content</th>
-        <th>created at</th>
-        <th>updated at</th>
-        <th>actions</th>
-      </tr>
-      <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.id %></td>
-        <td><%= article.title %></td>
-        <td><%= article.content %></td>
-        <td><%= article.created_at %></td>
-        <td><%= article.updated_at %></td>
-        <td>
-          <%= link_to "Show", article_path(article.id) %> |
-          <%= link_to "Edit", edit_article_path(article.id) %>
-        </td>
-      </tr>
+    <div class="row">
+        <h1 class="page-header">Article Index</h1>
+    </div>
+    <div class="row">
+        <%= link_to "New Article", new_article_path, class: 'btn btn-primary' %>
+    </div>
+    <div class="row">
+      <%= form_tag articles_path, class: "form-inline", method: :get do %>
+          <div class="form-group">
+            <label for="">Keyword</label>
+            <input type="text" class="form-control" name="q">
+          </div>
+          <div class="form-group">
+            <label for="">Sort Mode</label>
+            <select name="sort_mode" id="" class="form-control">
+              <option value="0">Title</option>
+              <option value="1">Recent</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Search</button>
+
       <% end %>
-    </table>
-  </div>
+      <%= link_to "Recents", articles_path(sort_mode: "1"), class: 'btn btn-success', method: :get %>
+
+    </div>
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>#</th>
+                <th>title</th>
+                <th>content</th>
+                <th>created at</th>
+                <th>updated at</th>
+                <th>actions</th>
+            </tr>
+            <% @articles.each do |article| %>
+            <tr onmouseover="onMouseOver(this)" onmouseout="onMouseOut(this)">
+                <td><%= article.id %></td>
+                <td><%= article.title %></td>
+                <td><%= article.content %></td>
+                <td><%= article.created_at %></td>
+                <td><%= article.updated_at %></td>
+                <td>
+                    <%= link_to "Show", article_path(article.id) %>
+                    |
+                    <%= link_to "Edit", edit_article_path(article.id) %>
+                </td>
+            </tr>
+            <% end %>
+        </table>
+    </div>
 </div>

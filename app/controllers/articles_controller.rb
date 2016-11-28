@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
   def index
-    @articles = Article.all
+    @articles = Article.search(params[:q]).ordering(params[:sort_mode])
   end
 
   def create
