@@ -14,7 +14,14 @@ $(document).ready(function () {
   });
 
   loadArticles();
+  loadRailsAJAXArticles();
 });
+
+function loadRailsAJAXArticles() {
+  $.get({
+    url: 'http://localhost:3000/articles.js'
+  })
+}
 
 function loadArticles() {
   var table = document.getElementById('jsarticles');

@@ -2,6 +2,9 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.search(params[:q]).ordering(params[:sort_mode])
+    respond_to do |format|
+      format.json { render json: @articles }
+    end
   end
 
   def create
