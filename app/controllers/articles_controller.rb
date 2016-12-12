@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
     @articles = Article.search(params[:q]).ordering(params[:sort_mode])
     respond_to do |format|
       format.json { render json: @articles }
+      format.html { render 'index' }
     end
   end
 
