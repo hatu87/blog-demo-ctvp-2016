@@ -51,3 +51,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'active_model_serializers', '0.10.3'
 gem 'rspec', '3.5.0'
 gem 'rspec-rails', '3.5.2'
+gem 'capybara', '2.11.0'
