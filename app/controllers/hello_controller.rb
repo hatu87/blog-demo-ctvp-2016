@@ -1,4 +1,6 @@
 class HelloController < ApplicationController
+  before_action :require_logged_in
+  
   def index
     @name = 'default'
   end

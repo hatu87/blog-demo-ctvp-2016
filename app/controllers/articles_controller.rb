@@ -1,11 +1,5 @@
 class ArticlesController < ApplicationController
-    def require_logged_in
-        user = User.find_by_id(session[:user_id])
-
-        redirect_to login_path if user.blank?
-    end
-
-    before_action :require_logged_in
+  before_action :require_logged_in
 
     def index
         @articles = Article.search(params[:q]).ordering(params[:sort_mode])
