@@ -21,4 +21,16 @@ RSpec.feature "LoginFeatures", type: :feature do
 
     expect(current_path).to eq('/articles')
   end
+
+  scenario "visit /login and enter invalid email, password will render error" do
+    visit '/login'
+    fill_in 'email', with: 'ken@mail.vn'
+    fill_in 'password', with: '1234468'
+
+    click_button "Login"
+
+    expect(current_path).to eq('/login')
+    expect(page).to have_text("Invalid Email or Password")
+
+  end
 end

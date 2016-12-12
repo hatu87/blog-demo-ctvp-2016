@@ -1,4 +1,7 @@
 <h1>Sessions#new</h1>
+<% if flash[:error].present? %>
+  <%= flash[:error] %>
+<% end %>
 <%= form_tag do %>
   <div class="form-group">
     <%= label_tag :email %>
