@@ -10,10 +10,12 @@ RSpec.feature "LoginFeatures", type: :feature do
   end
 
   scenario "visit /login and enter valid email, password will redirect to /articles" do
+    user = User.create(email: Faker::Internet.email, password: Faker::Internet.password(8), name: Faker::Name.name)
+
     visit '/login'
 
-    fill_in 'email', with: 'ken@mail.vn'
-    fill_in 'password', with: '12345678'
+    fill_in 'email', with: user.email
+    fill_in 'password', with: user.password
 
     click_button "Login"
 
